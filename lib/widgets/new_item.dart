@@ -49,8 +49,9 @@ class _NewItemState extends State<NewItem> {
                       validator: (value) {
                         if (value == null ||
                             value.isEmpty ||
-                            value.trim().length > 50) {
-                          return 'Must be between 1 and 50 characters';
+                            int.tryParse(value) == null ||
+                            int.tryParse(value)! <= 0) {
+                          return 'Must be a valid positive number';
                         }
                         return null;
                       },
